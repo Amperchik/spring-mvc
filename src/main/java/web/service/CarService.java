@@ -1,20 +1,14 @@
-package web.controller;
+package web.service;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import web.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Controller
-public class ListCars {
-    @GetMapping(value = "/cars")
-    public String printCars(ModelMap model, @RequestParam("count") int count) {
-        List<Car> cars = new ArrayList<>();
+public class CarService {
+    public List<String> getListCars(int count){
+        List<Car> cars=new ArrayList<>();
         cars.add(new Car("BMW", 1, "Vasia"));
         cars.add(new Car("Audi", 2, "Petya"));
         cars.add(new Car("Skoda", 3, "Kolya"));
@@ -24,7 +18,6 @@ public class ListCars {
                 limit(count).
                 map(x->x.toString()).
                 collect(Collectors.toList());
-        model.addAttribute("message", request);
-        return "cars";
+        return request;
     }
 }
