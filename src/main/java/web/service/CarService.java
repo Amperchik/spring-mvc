@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 @Service
 public class CarService {
-    List<Car> cars;
+    private List<Car> cars;
 
     public CarService() {
         this.cars = new ArrayList<>();
